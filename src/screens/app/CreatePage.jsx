@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
-// import { ChatFriendCard } from '../../components/framework/card'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BackpressTopBar from '../../components/framework/navbar/BackpressTopBar';
 import TextArea from '../../components/framework/input/TextArea';
@@ -12,8 +11,6 @@ import AntDesign from 'react-native-vector-icons/dist/AntDesign'
 import Spacer from '../../components/framework/boots/Spacer';
 import GradientTextButton from '../../components/framework/button/GradientTextButton';
 import OutLineButton from '../../components/framework/button/OutLineButton';
-
-
 
 const CreatePage = () => {
     return (

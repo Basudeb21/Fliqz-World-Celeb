@@ -1,6 +1,6 @@
 import { ImageBackground, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import { Colors, Images, NavigationStrings } from '../../constants'
+import { Colors, Images, NavigationStrings, Strings } from '../../constants'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import FastImage from 'react-native-fast-image';
 import { useNavigation } from '@react-navigation/native';
@@ -37,16 +37,16 @@ const LoginScreen = () => {
                     <Text style={styles.loginTxt}>Login</Text>
                     <Spacer height={30} />
                     <View style={styles.inputContainer}>
-                        <TextInputBox value={userName} setValue={setUserName} placeholder='Email / Username*' />
+                        <TextInputBox value={userName} setValue={setUserName} placeholder={Strings.EMAIL_OR_USERNAME} />
                         <Spacer height={20} />
-                        <PasswordInputBox value={password} setValue={setPassword} placeholder='Password' />
+                        <PasswordInputBox value={password} setValue={setPassword} placeholder={Strings.PASSWORD} />
                     </View>
                     <View style={styles.btnContainer}>
-                        <Link label={"Forgot Password?"} />
+                        <Link label={Strings.FORGOT_PASSWORD} />
                         <Spacer height={10} />
-                        <GradientTextButton label='Login' width='100%' />
+                        <GradientTextButton label={Strings.LOGIN} width='100%' />
                         <Spacer height={15} />
-                        <OutLineButton label_one={"Don’t have an account? "} label_two={"Sign Up"} onPress={handleLoginPress} />
+                        <OutLineButton label_one={Strings.DONT_HAVE_ACCOUNT} label_two={Strings.SIGNUP} onPress={handleLoginPress} />
 
                     </View>
                 </ScrollView>

@@ -81,6 +81,9 @@ const SettingsScreen = () => {
         { id: 6, Icon: FontAwesome6, iconName: "user-shield", text: "Privacy", onPress: onPressPrivacy },
         { id: 7, Icon: MaterialIcons, iconName: "verified", text: "Verify", onPress: onPressVerify },
         { id: 8, Icon: Fontisto, iconName: "ticket-alt", text: "Support Ticket", onPress: onPressSupportTicket },
+        { id: 9, Icon: FontAwesome6, iconName: "bullhorn", text: "Promotion", onPress: onPressPromotion },
+        { id: 10, Icon: FontAwesome6, iconName: "tags", text: "Subscription Price", onPress: onPressSubscribtionPrice },
+
     ]
     return (
         <View style={{ backgroundColor: Colors.WHITE, flex: 1 }}>

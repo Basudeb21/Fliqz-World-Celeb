@@ -4,25 +4,19 @@ import BackpressTopBar from '../../../../components/framework/navbar/BackpressTo
 import { Colors } from '../../../../constants'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import GradientIconTextCard from '../../../../components/framework/card/GradientIconTextCard'
-import Ionicons from 'react-native-vector-icons/dist/Ionicons'
-import Entypo from 'react-native-vector-icons/dist/Entypo'
+import { helpAndSupportCards } from '../../../../data/helpAndSupportCards'
+import GradientIconButton from '../../../../components/framework/button/GradientIconButton'
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/dist/FontAwesome'
-import Foundation from 'react-native-vector-icons/dist/Foundation'
+import Spacer from '../../../../components/framework/boots/Spacer'
 
 
 const HelpAndSettingsScreen = () => {
-    const cardContents = [
-        { id: 1, Icon: Ionicons, iconName: "settings-sharp", label: "Account Settings", content: "Adjust settings, manage notifications, learn about name changes and more." },
-        { id: 2, Icon: Entypo, iconName: "key", label: "Login and Password", content: "Fix login issues and learn how to change or reset your password." },
-        { id: 3, Icon: MaterialIcons, iconName: "security", label: "Privacy and Security", content: "Control who can see what you share and add extra protection to your account." },
-        { id: 4, Icon: Entypo, iconName: "shop", label: "Marketplace", content: "Learn how to buy and sell things on Facebook." },
-        { id: 5, Icon: FontAwesome, iconName: "group", label: "Groups", content: "Learn how to create, manage and use Groups." },
-        { id: 6, Icon: Foundation, iconName: "page-multiple", label: "Pages", content: "Learn how to create, use, follow and manage a Page." }
-    ]
+    const cardContents = helpAndSupportCards;
+
     return (
         <View style={{ flex: 1, backgroundColor: Colors.WHITE }}>
             <BackpressTopBar title={"Help and Support"} />
+            <Spacer height={10} />
             <Text style={styles.updateTxt}>Last updated: 2025-05-06</Text>
             <FlatList
                 data={cardContents}
@@ -39,6 +33,13 @@ const HelpAndSettingsScreen = () => {
                 )}
                 contentContainerStyle={styles.contentContainer}
                 showsVerticalScrollIndicator={false}
+                ListFooterComponent={
+                    <>
+                        <Text style={styles.bigTxt}>Looking for something else?</Text>
+                        <Spacer height={20} />
+                        <GradientIconButton Icon={MaterialIcons} iconName={"add-circle"} iconSize={20} label='Add Support Ticket' />
+                    </>
+                }
             />
         </View>
     )
@@ -59,5 +60,10 @@ const styles = StyleSheet.create({
     },
     row: {
         justifyContent: 'space-between',
+    },
+    bigTxt: {
+        fontSize: scale(20),
+        alignSelf: "center",
+        fontWeight: "800"
     }
 })

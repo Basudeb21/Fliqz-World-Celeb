@@ -15,16 +15,25 @@ import AllTransactions from '../home-mini-components/AllTransactions';
 const WalletScreen = () => {
     const [addFundForm, setAddFundForm] = useState(true);
     const [viewTransactions, setViewTransactions] = useState(false);
+    const [openWithdraw, setOpenWithdraw] = useState(false);
 
     const handleAddFundFormPress = () => {
         setAddFundForm(true);
         setViewTransactions(false);
+        setOpenWithdraw(false)
     };
 
     const handleViewTransactionsPress = () => {
         setAddFundForm(false);
         setViewTransactions(true);
+        setOpenWithdraw(false)
     };
+
+    const handleOpenWithdrawPress = () => {
+        setAddFundForm(false);
+        setViewTransactions(false);
+        setOpenWithdraw(true)
+    }
 
 
     return (
@@ -39,12 +48,16 @@ const WalletScreen = () => {
             <ProfileFundCard />
             <View style={styles.btnRow}>
                 {addFundForm ?
-                    <GradientTextButton label='Add Funds' width='40%' fontSize={14} onPress={handleAddFundFormPress} height={40} /> :
-                    <OutLineButton label_two='Add Funds' width='40%' fontSize={14} onPress={handleAddFundFormPress} height={40} />
+                    <GradientTextButton label='Add Funds' width='30%' fontSize={14} onPress={handleAddFundFormPress} height={40} /> :
+                    <OutLineButton label_two='Add Funds' width='30%' fontSize={14} onPress={handleAddFundFormPress} height={40} />
                 }
                 {viewTransactions ?
-                    <GradientTextButton label='Transactions' width='40%' fontSize={14} onPress={handleViewTransactionsPress} height={40} /> :
-                    <OutLineButton label_two='Transactions' width='40%' fontSize={14} onPress={handleViewTransactionsPress} height={40} />
+                    <GradientTextButton label='Transactions' width='30%' fontSize={14} onPress={handleViewTransactionsPress} height={40} /> :
+                    <OutLineButton label_two='Transactions' width='30%' fontSize={14} onPress={handleViewTransactionsPress} height={40} />
+                }
+                {openWithdraw ?
+                    <GradientTextButton label='Withdraw' width='30%' fontSize={14} onPress={handleOpenWithdrawPress} height={40} /> :
+                    <OutLineButton label_two='Withdraw' width='30%' fontSize={14} onPress={handleOpenWithdrawPress} height={40} />
                 }
             </View>
             <View style={styles.dynamicContainer}>
@@ -59,7 +72,7 @@ export default WalletScreen
 
 const styles = StyleSheet.create({
     topContainer: {
-        marginHorizontal: moderateScale(20)
+        marginHorizontal: moderateScale(10)
     },
     btnRow: {
         flexDirection: "row",

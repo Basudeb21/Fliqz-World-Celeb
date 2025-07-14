@@ -1,6 +1,6 @@
 import { ImageBackground, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import { Colors, Images, NavigationStrings } from '../../constants'
+import { Colors, Images, NavigationStrings, Strings } from '../../constants'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import FastImage from 'react-native-fast-image';
 import { useNavigation } from '@react-navigation/native';
@@ -62,17 +62,17 @@ const SignupScreen = () => {
 
                     <View style={styles.txtContainer}>
                         <Text style={styles.loginTxt}>Create Account</Text>
-                        <Text style={[styles.loginTxt, styles.subs]}>For Subscriber</Text>
+                        <Text style={[styles.loginTxt, styles.subs]}>For Celebrity</Text>
                     </View>
                     <Spacer height={13} />
 
                     <View style={styles.inputContainer}>
-                        <TextInputBox value={fullName} setValue={setFullName} placeholder='Full Name*' />
+                        <TextInputBox value={fullName} setValue={setFullName} placeholder={Strings.FULL_NAME} />
                         <Spacer height={20} />
-                        <TextInputBox value={email} setValue={setEmail} placeholder='Email*' />
+                        <TextInputBox value={email} setValue={setEmail} placeholder={Strings.EMAIL} />
                         <Spacer height={20} />
                         <PhoneNumberInput
-                            placeholder='Phone Number'
+                            placeholder={Strings.PHONE_NUMBER}
                             phoneNumber={phoneNumber}
                             setphoneNumber={setphoneNumber}
                             countryCode={countryCode}
@@ -81,9 +81,9 @@ const SignupScreen = () => {
                             setCallingCode={setCallingCode}
                         />
                         <Spacer height={20} />
-                        <PasswordInputBox value={password} setValue={setPassword} placeholder='Password*' />
+                        <PasswordInputBox value={password} setValue={setPassword} placeholder={Strings.PASSWORD} />
                         <Spacer height={20} />
-                        <PasswordInputBox value={confirmPassword} setValue={setConfirmPassword} placeholder='Confirm Password*' />
+                        <PasswordInputBox value={confirmPassword} setValue={setConfirmPassword} placeholder={Strings.CONFIRM_PASSWORD} />
                         <Spacer height={20} />
                     </View>
                     <View style={styles.checkBocContainer}>
@@ -91,21 +91,21 @@ const SignupScreen = () => {
                             <Checkbox />
                             <Text>I agree to the </Text>
                             <Link
-                                label={"Terms of Use"}
+                                label={Strings.TERMS_OF_USE}
                                 onPress={() => setTermsModal(true)}
                             />
                             <Text> and </Text>
                             <Link
-                                label={"Privacy Policy"}
+                                label={Strings.PRIVACY_POLICY}
                                 onPress={() => setPrivacyModal(true)}
                             />
                         </View>
                     </View>
                     <Spacer height={10} />
                     <View style={styles.btnContainer}>
-                        <GradientTextButton label='Signup' onPress={handlehomePress} />
+                        <GradientTextButton label={Strings.SIGNUP} onPress={handlehomePress} />
                         <Spacer height={10} />
-                        <OutLineButton label_one={"Already have an account? "} label_two={"Login"} onPress={handleSignupPress} />
+                        <OutLineButton label_one={Strings.ALLREADY_HAVE_ACCOUNT} label_two={Strings.LOGIN} onPress={handleSignupPress} />
                     </View>
                     <Spacer height={20} />
                 </KeyboardAvoidingView>
@@ -139,7 +139,7 @@ const SignupScreen = () => {
                     onClose={() => setPrivacyModal(false)}
                     head={"Privacy and Policy"}
                     contentType={"Privacy and Policy"}
-                    updateDate={"Last updated: 2021-09-30"}
+                    updateDate={Strings.LAST_UPDATE}
                     data={privacyAndPolicyData}
                 />
             )}

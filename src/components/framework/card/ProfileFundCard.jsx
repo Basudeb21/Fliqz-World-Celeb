@@ -29,7 +29,7 @@ export default ProfileFundCard
 const styles = StyleSheet.create({
     container: {
         marginTop: verticalScale(30),
-        marginHorizontal: moderateScale(20),
+        marginHorizontal: moderateScale(10),
         borderWidth: scale(1),
         padding: scale(15),
         borderColor: Colors.THEME,

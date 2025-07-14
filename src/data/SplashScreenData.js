@@ -1,4 +1,4 @@
-import { Images } from "../constants";
+import { Images, Strings } from "../constants";
 
 export const SPLASH_IMG_ARR = [
     Images.SPLASH_CELEB_ONE,
@@ -8,7 +8,7 @@ export const SPLASH_IMG_ARR = [
 
 export const HEAD_TXT_ARR = [
     'Welcome to ',
-    'My Vault',
+    Strings.APP_NAME,
     "Communicate with Celebrities",
     "Unlimited Post Share"
 

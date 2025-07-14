@@ -5,30 +5,36 @@ import { Colors, Images } from '../../../constants'
 import Entypo from 'react-native-vector-icons/dist/Entypo'
 import HR from '../boots/HR'
 import Spacer from '../boots/Spacer'
+import SearchBar from '../input/SearchBar'
 
 const SimpleTable = ({ data }) => {
     return (
         <View>
-            <View style={styles.head}>
-                <Text style={styles.headTxt}>To</Text>
-                <Spacer width={60} />
-                <Text style={styles.headTxt}>Status</Text>
-                <Text style={styles.headTxt}>Paid With</Text>
-                <Text style={styles.headTxt}>Renews</Text>
-                <Text style={styles.headTxt}>Expire At</Text>
-                <Text style={styles.headTxt}>{" "}</Text>
-
-            </View>
-            <Spacer height={10} />
-            <HR
-                height={1}
-                width='94%'
-                center={true}
-            />
-
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id.toString()}
+                ListHeaderComponent={
+                    <>
+                        <Spacer height={20} />
+                        <SearchBar placeholder={"Search"} />
+                        <View style={styles.head}>
+                            <Text style={styles.headTxt}>To</Text>
+                            <Spacer width={60} />
+                            <Text style={styles.headTxt}>Status</Text>
+                            <Text style={styles.headTxt}>Paid With</Text>
+                            <Text style={styles.headTxt}>Renews</Text>
+                            <Text style={styles.headTxt}>Expire At</Text>
+                            <Text style={styles.headTxt}>{" "}</Text>
+
+                        </View>
+                        <Spacer height={10} />
+                        <HR
+                            height={1}
+                            width='94%'
+                            center={true}
+                        />
+                    </>
+                }
                 renderItem={({ item }) => (
                     <>
                         <View View style={styles.bodyRow} >

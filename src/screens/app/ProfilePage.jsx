@@ -16,7 +16,7 @@ import OutlineIconButton from '../../components/framework/button/OutlineIconButt
 import Spacer from '../../components/framework/boots/Spacer'
 import OutLineButton from '../../components/framework/button/OutLineButton'
 import { useNavigation } from '@react-navigation/native'
-import { Colors, NavigationStrings } from '../../constants'
+import { Colors, NavigationStrings, Strings } from '../../constants'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const ProfilePage = () => {
@@ -104,7 +104,7 @@ const ProfilePage = () => {
 
 
     const cardData = [
-        { id: 1, icon: Ionicons, iconName: "diamond-outline", text: "Become a creator", onPress: onPressCreatorRequest },
+        { id: 1, icon: Entypo, iconName: "line-graph", text: "Analytics", onPress: onPressCreatorRequest },
         { id: 2, icon: Ionicons, iconName: "notifications", text: "Notification", onPress: onPressNotification },
         { id: 3, icon: Entypo, iconName: "shopping-basket", text: "Orders", onPress: onPressOrders },
         { id: 4, icon: FontAwesome, iconName: "list-ul", text: "Lists", onPress: onPressLists },
@@ -166,7 +166,7 @@ const ProfilePage = () => {
                         </View>
                         <Spacer height={5} />
                         <View style={{ justifyContent: "center", alignItems: "center" }}>
-                            <OutLineButton label_two={"Logout"} width={"90%"} />
+                            <OutLineButton label_two={Strings.LOGOUT} width={"90%"} />
                         </View>
                         <Spacer height={10} />
 

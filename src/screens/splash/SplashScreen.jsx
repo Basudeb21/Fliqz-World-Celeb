@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
-import { Colors, Images, NavigationStrings } from '../../constants'
+import { Colors, Images, NavigationStrings, Strings } from '../../constants'
 import FastImage from 'react-native-fast-image';
 import { useNavigation } from '@react-navigation/native';
 import LoadingBar from '../../components/framework/boots/LoadingBar';
@@ -26,7 +26,7 @@ const SplashScreen = () => {
             />
             <View style={styles.loadingContainer}>
                 <LoadingBar />
-                <Text style={styles.loadingTxt}>Loading....</Text>
+                <Text style={styles.loadingTxt}>{Strings.LOADING}</Text>
             </View>
         </SafeAreaView>
     )

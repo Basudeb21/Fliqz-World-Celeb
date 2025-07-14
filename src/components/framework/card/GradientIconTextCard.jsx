@@ -6,7 +6,7 @@ import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 
 const GradientIconTextCard = ({ Icon, iconName, label = "Swipe to next", content, onPress }) => {
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={styles.cardWrapper}> {/* ← fix here */}
+        <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={styles.cardWrapper}>
             <LinearGradient
                 colors={[Colors.BUTTON_GRADIENT_TWO, Colors.BUTTON_GRADIENT_ONE]}
                 start={{ x: 0, y: 0 }}
@@ -20,8 +20,8 @@ const GradientIconTextCard = ({ Icon, iconName, label = "Swipe to next", content
                         size={24}
                         style={styles.iconStyle}
                     />
-                    <Text style={styles.text}>{label}</Text>
-                    <Text style={styles.content}>{content}</Text>
+                    <Text style={styles.text}>{label.toString()}</Text>
+                    <Text style={styles.content}>{content.toString()}</Text>
                 </View>
             </LinearGradient>
         </TouchableOpacity>

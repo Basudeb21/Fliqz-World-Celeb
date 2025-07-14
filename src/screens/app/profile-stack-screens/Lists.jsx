@@ -3,9 +3,10 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import BackpressTopBar from '../../../components/framework/navbar/BackpressTopBar'
 import ListCardItem from '../../../components/framework/card/ListCardItem'
-import { Images, NavigationStrings } from '../../../constants'
+import { Colors, Images, NavigationStrings } from '../../../constants'
 import Spacer from '../../../components/framework/boots/Spacer'
 import { useNavigation } from '@react-navigation/native'
+import FloatingActionButton from '../../../components/framework/button/FloattingActionButton'
 
 const Lists = () => {
     const users = [
@@ -20,7 +21,7 @@ const Lists = () => {
     };
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1, backgroundColor: Colors.WHITE }}>
             <BackpressTopBar title={"Lists"} />
             <FlatList
                 ListHeaderComponent={<Spacer height={15} />}
@@ -36,10 +37,16 @@ const Lists = () => {
                 )}
                 ItemSeparatorComponent={<Spacer height={10} />}
             />
+            <FloatingActionButton />
         </SafeAreaView>
     )
 }
 
 export default Lists
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    fab: {
+        position: "absolute",
+
+    }
+})

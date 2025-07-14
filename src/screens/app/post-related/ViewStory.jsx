@@ -9,7 +9,7 @@ import {
     Image,
     TouchableWithoutFeedback,
 } from 'react-native';
-import { Colors, Images } from '../../../constants';
+import { Colors } from '../../../constants';
 import StoryHead from '../../../components/framework/navbar/StoryHead';
 import { useNavigation } from '@react-navigation/native';
 import StoryViewButtonGroup from '../../../components/framework/button/StoryViewButtonGroup';
