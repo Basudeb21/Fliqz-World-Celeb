@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, View } from 'react-native'
 import React from 'react'
 import BackpressProfileTopBar from '../../components/framework/navbar/BackpressProfileTopBar'
 import ProfileCard from '../../components/framework/card/ProfileCard'
@@ -9,7 +9,9 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons'
 import Entypo from 'react-native-vector-icons/dist/Entypo'
 import Ionicons from 'react-native-vector-icons/dist/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/dist/FontAwesome5'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux-store/slices/authSlice';
 import Octicons from 'react-native-vector-icons/dist/Octicons'
 import FontAwesome6 from 'react-native-vector-icons/dist/FontAwesome6'
 import OutlineIconButton from '../../components/framework/button/OutlineIconButton'
@@ -21,7 +23,19 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 const ProfilePage = () => {
 
+    const dispatch = useDispatch();
     const navigation = useNavigation();
+
+    const onPressLogout = async () => {
+        try {
+            await AsyncStorage.removeItem('userData');
+            dispatch(logout());
+            navigation.goBack();
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
+    };
+
     const onPressCreatorRequest = () => {
         navigation.navigate(NavigationStrings.PROFILE_STACK, {
             screen: NavigationStrings.PROFILE_BECOME_A_CREATOR
@@ -120,10 +134,11 @@ const ProfilePage = () => {
 
     const buttonData = [
         { id: 1, icon: FontAwesome, iconName: "legal", label: "Legal", onPress: onPressShop },
-        // { id: 2, icon: MaterialIcons, iconName: "event", label: "Events", onPress: onPressEvents },
         { id: 3, icon: MaterialIcons, iconName: "support-agent", label: "Help & Support", onPress: onPressHelpAndSupport },
         { id: 4, icon: Ionicons, iconName: "settings-sharp", label: "Settings", onPress: onPressSettings },
     ]
+    const user = useSelector((state) => state.auth.user);
+    const userName = user?.first_name;
 
     return (
         <SafeAreaView style={styles.container}>
@@ -131,8 +146,8 @@ const ProfilePage = () => {
             <FlatList
                 ListHeaderComponent={
                     <View>
-                        <BackpressProfileTopBar title={"Myprofile_4321"} />
-                        <ProfileCard userName={"Myprofile_4321"} />
+                        <BackpressProfileTopBar title={userName} />
+                        <ProfileCard userName={userName} />
                         <Spacer height={90} />
 
                     </View>
@@ -166,7 +181,7 @@ const ProfilePage = () => {
                         </View>
                         <Spacer height={5} />
                         <View style={{ justifyContent: "center", alignItems: "center" }}>
-                            <OutLineButton label_two={Strings.LOGOUT} width={"90%"} />
+                            <OutLineButton label_two={Strings.LOGOUT} width={"90%"} onPress={onPressLogout} />
                         </View>
                         <Spacer height={10} />
 

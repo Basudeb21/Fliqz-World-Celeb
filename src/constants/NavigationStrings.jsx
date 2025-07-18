@@ -78,6 +78,7 @@ export default {
     PROFILE_AUCTION_SCREEN: "AuctionScreen",
     PROFILE_AUTION_ITEM_SCREEN: "AuctionItemScreen",
     PROFILE_ALL_BIDS: "AllBids",
+    PROFILE_ADD_NEW_EVENT: "AddNewEvent",
 
     // Settings Stack Screens
     SETTINGS_EDIT_PROFILE_SCREEN: "EditProfile",

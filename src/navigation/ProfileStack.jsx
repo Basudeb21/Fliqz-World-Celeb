@@ -17,10 +17,12 @@ import SettingsScreen from '../screens/app/profile-stack-screens/outline-btn-men
 import EventsScreen from '../screens/app/profile-stack-screens/outline-btn-menu/EventsScreen';
 import EventDetailsScreen from '../screens/app/profile-stack-screens/outline-btn-menu/sub-screen/EventDetailsScreen';
 import SettingsStack from './SettingsStack';
-import BecomeACreator from '../screens/app/profile-stack-screens/BecomeACreator';
+import Analitics from '../screens/app/profile-stack-screens/Analitics';
 import Auction from '../screens/app/profile-stack-screens/Auction';
 import AuctionItemPage from '../screens/app/profile-stack-screens/AuctionItemPage';
 import AllBids from '../screens/app/profile-stack-screens/AllBids';
+import AuthStack from './AuthStack';
+import AddNewEvent from '../screens/app/profile-stack-screens/outline-btn-menu/sub-screen/AddNewEvent';
 const ProfileStack = () => {
     const Stack = createNativeStackNavigator();
 
@@ -42,10 +44,12 @@ const ProfileStack = () => {
             <Stack.Screen name={NavigationStrings.PROFILE_HELP_AND_SUPPORT_SCREEN} component={HelpAndSettingsScreen} />
             <Stack.Screen name={NavigationStrings.PROFILE_SETTINGS_SCREEN} component={SettingsScreen} />
             <Stack.Screen name={NavigationStrings.SETTINGS_STACK} component={SettingsStack} />
-            <Stack.Screen name={NavigationStrings.PROFILE_BECOME_A_CREATOR} component={BecomeACreator} />
+            <Stack.Screen name={NavigationStrings.PROFILE_BECOME_A_CREATOR} component={Analitics} />
             <Stack.Screen name={NavigationStrings.PROFILE_AUCTION_SCREEN} component={Auction} />
             <Stack.Screen name={NavigationStrings.PROFILE_AUTION_ITEM_SCREEN} component={AuctionItemPage} />
             <Stack.Screen name={NavigationStrings.PROFILE_ALL_BIDS} component={AllBids} />
+            <Stack.Screen name={NavigationStrings.PROFILE_ADD_NEW_EVENT} component={AddNewEvent} />
+            <Stack.Screen name={NavigationStrings.AUTH_STACK} component={AuthStack} />
         </Stack.Navigator>
     );
 }

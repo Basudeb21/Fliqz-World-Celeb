@@ -7,12 +7,14 @@ import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import { Colors, Images, NavigationStrings } from '../../../constants';
 import { ChatPage, CreatePage, HomePage, LivePage, ProfilePage } from '../../../screens/app';
 import GradientIcon from '../icon/GradientIcon';
+import { useSelector } from 'react-redux';
 
 
 
 const BottomNavbar = () => {
     const Tab = createBottomTabNavigator();
     const iconSize = 24;
+    const user = useSelector((state) => state.auth.user);
 
     return (
         <Tab.Navigator
@@ -96,7 +98,7 @@ const BottomNavbar = () => {
                 options={{
                     tabBarLabel: NavigationStrings.PROFILE_SCREEN,
                     tabBarIcon: ({ focused }) => (
-                        <Image source={{ uri: Images.CELEBRITY_AVATAR_ONE }} style={focused ? styles.active : styles.img} />
+                        <Image source={{ uri: user?.avatar }} style={focused ? styles.active : styles.img} />
                     ),
                 }}
             />

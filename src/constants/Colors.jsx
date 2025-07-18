@@ -13,6 +13,9 @@ export default {
     BILLING_HEADER: "#E9E9E9",
     PURPLE: "#93229f",
     PINK: "#FB2752",
+    GREEN: "#00E600",
+    LIGHT_BLUE: "#00C4FF",
+    CYAN: "#00CFFF",
     INCOME: "#28A745",
     DARK: "#212328",
 
@@ -21,9 +24,6 @@ export default {
     TRANSPARENT_BLACK: "rgba(0, 0, 0, 0.3)",
     TRANSPARENT_BLACK_DARK: "rgba(0, 0, 0, 0.5)",
     TRANSPARENT_BLACK_DARK_EIGHT: "rgba(0, 0, 0, 0.8)",
-
-
-
 
     PLACEHOLDER: "#6D6D6D",
     INPUTBOX_DEACTIVE_BORDER_COLOR: "#BFBFBF",
@@ -42,14 +42,9 @@ export default {
     PRIORITY_MIDIUM: "#FFC107",
     PRIORITY_HIGH: "#FF4C4C",
 
-
-
-
     FACEBOOK_LOGO: "#1877F2",
     GOOGLE_LOGO: "#DB4437",
     TWITTER_LOGO: "#1DA1F2",
     INSTAGRAM_LOGO: "#405DE6"
-
-
 
 }

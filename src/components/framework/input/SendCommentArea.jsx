@@ -1,54 +1,61 @@
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Colors } from '../../../constants'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { moderateScale, verticalScale } from 'react-native-size-matters'
-import GradientIcon from '../icon/GradientIcon'
-import { postDonePressSounds } from '../../../sound/SoundManager'
+import { StyleSheet, TextInput, TouchableOpacity, View, Keyboard } from 'react-native';
+import { Colors } from '../../../constants';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { moderateScale, verticalScale } from 'react-native-size-matters';
+import GradientIcon from '../icon/GradientIcon';
+import { postDonePressSounds } from '../../../sound/SoundManager';
 
-const SendCommentArea = ({ placeholder, value, setValue }) => {
+import React, { useState } from 'react';
+
+const SendCommentArea = ({ placeholder, bgColor, fontColor, onSendComment }) => {
+    const [value, setValue] = useState('');
+
     const onPressPostComment = () => {
-        console.log("OKKK");
+        if (value.trim()) {
+            onSendComment?.(value.trim());
+            setValue('');
+            postDonePressSounds();
+            Keyboard.dismiss();
+        }
+    };
 
-        postDonePressSounds();
-    }
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: bgColor || Colors.LIGHT_GRAY }]}>
             <TextInput
-                style={styles.inputBox}
+                style={[styles.inputBox, { color: fontColor || Colors.BLACK }]}
                 placeholder={placeholder}
                 placeholderTextColor={Colors.PLACEHOLDER}
-                cursorColor={Colors.BLACK}
+                cursorColor={fontColor || Colors.BLACK}
                 value={value}
                 onChangeText={setValue}
                 multiline={true}
                 scrollEnabled={true}
+                onSubmitEditing={onPressPostComment}
+                blurOnSubmit={false}
             />
             <View style={styles.btnContainer}>
-                <TouchableOpacity style={styles.icon}
+                <TouchableOpacity
+                    style={styles.icon}
                     onPress={onPressPostComment}
-
                 >
                     <GradientIcon
                         name={"send-circle"}
                         size={32}
                         IconPack={MaterialCommunityIcons}
                         colors={[Colors.BUTTON_GRADIENT_ONE, Colors.BUTTON_GRADIENT_TWO]}
-
                     />
                 </TouchableOpacity>
             </View>
         </View>
-    )
+    );
 }
 
-export default SendCommentArea
+export default SendCommentArea;
 
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: moderateScale(14),
-        backgroundColor: Colors.LIGHT_GRAY,
-        borderRadius: 25,
+        borderRadius: 100,
         paddingHorizontal: moderateScale(15),
         paddingVertical: verticalScale(6),
         flexDirection: "row",
@@ -61,7 +68,6 @@ const styles = StyleSheet.create({
     },
     inputBox: {
         flex: 1,
-        color: Colors.BLACK,
         maxHeight: verticalScale(120),
         paddingRight: moderateScale(10),
     },
@@ -73,4 +79,4 @@ const styles = StyleSheet.create({
         marginLeft: moderateScale(8),
         paddingBottom: verticalScale(4),
     }
-})
+});

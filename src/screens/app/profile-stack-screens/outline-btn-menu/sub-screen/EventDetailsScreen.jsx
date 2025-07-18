@@ -7,11 +7,13 @@ import Ionicons from 'react-native-vector-icons/dist/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import GradientTextButton from '../../../../../components/framework/button/GradientTextButton'
+import BackpressTopBar from '../../../../../components/framework/navbar/BackpressTopBar'
 
 
 const EventDetailsScreen = () => {
     return (
         <View>
+            <BackpressTopBar title={"Event Details"} />
             <Image source={{ uri: Images.EVENT_EIGHT }} style={styles.eventImg} />
             <Text style={styles.eventName}>Event One</Text>
             <Text style={styles.eventAbout}> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla soluta qui, architecto beatae quasi totam alias molestias a magnam iste!</Text>

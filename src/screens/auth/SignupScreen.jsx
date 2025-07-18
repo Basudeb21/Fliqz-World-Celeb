@@ -1,4 +1,4 @@
-import { ImageBackground, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, KeyboardAvoidingView, ScrollView, StyleSheet, Text, ToastAndroid, View } from 'react-native'
 import React, { useState } from 'react'
 import { Colors, Images, NavigationStrings, Strings } from '../../constants'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
@@ -20,11 +20,14 @@ import HR from '../../components/framework/boots/HR';
 import PrivacyModal from '../../components/framework/modal/PrivacyModal';
 import { termsOfData } from '../../data/termsOfUseData';
 import { privacyAndPolicyData } from '../../data/privacyAndPolicyData';
+import RegisterApi from '../../api/auth/RegisterApi';
 
 const SignupScreen = () => {
 
-    const [fullName, setFullName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [refferalCode, setRefferalCode] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [phoneNumber, setphoneNumber] = useState('')
@@ -33,6 +36,35 @@ const SignupScreen = () => {
     const [privacyModal, setPrivacyModal] = useState(false);
     const [termsModal, setTermsModal] = useState(false);
 
+    const handelRegister = async () => {
+        try {
+            const result = await RegisterApi(
+                "creator",
+                refferalCode,
+                firstName,
+                lastName,
+                email,
+                phoneNumber,
+                password,
+                confirmPassword,
+                callingCode
+            )
+            console.log(result);
+
+            if (result.success == false) {
+                ToastAndroid.show(result.message, ToastAndroid.SHORT);
+            }
+
+            if (result.success == true) {
+                ToastAndroid.show(result.message, ToastAndroid.SHORT);
+                handleSignupPress();
+            }
+
+        } catch (error) {
+            console.log(error);
+            ToastAndroid.show(error, ToastAndroid.SHORT);
+        }
+    }
 
     const navigation = useNavigation();
 
@@ -67,7 +99,11 @@ const SignupScreen = () => {
                     <Spacer height={13} />
 
                     <View style={styles.inputContainer}>
-                        <TextInputBox value={fullName} setValue={setFullName} placeholder={Strings.FULL_NAME} />
+                        <TextInputBox value={firstName} setValue={setFirstName} placeholder={Strings.FIRST_NAME} />
+                        <Spacer height={20} />
+                        <TextInputBox value={lastName} setValue={setLastName} placeholder={Strings.LAST_NAME} />
+                        <Spacer height={20} />
+                        <TextInputBox value={refferalCode} setValue={setRefferalCode} placeholder={Strings.REFFERAL_CODE} />
                         <Spacer height={20} />
                         <TextInputBox value={email} setValue={setEmail} placeholder={Strings.EMAIL} />
                         <Spacer height={20} />
@@ -103,7 +139,7 @@ const SignupScreen = () => {
                     </View>
                     <Spacer height={10} />
                     <View style={styles.btnContainer}>
-                        <GradientTextButton label={Strings.SIGNUP} onPress={handlehomePress} />
+                        <GradientTextButton label={Strings.SIGNUP} onPress={handelRegister} />
                         <Spacer height={10} />
                         <OutLineButton label_one={Strings.ALLREADY_HAVE_ACCOUNT} label_two={Strings.LOGIN} onPress={handleSignupPress} />
                     </View>

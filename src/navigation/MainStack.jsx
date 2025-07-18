@@ -6,7 +6,6 @@ import ChatStack from './ChatStack';
 import BottomNavbar from '../components/framework/navbar/BottomNavbar';
 import ProfileStack from './ProfileStack';
 import PostStack from './PostStack';
-// import { BottomNavbar } from '../components/framework/navbar';
 
 const MainStack = () => {
     const Stack = createNativeStackNavigator();

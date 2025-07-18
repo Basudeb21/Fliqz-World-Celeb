@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
 import { useNavigation } from '@react-navigation/native';
 import { Colors, Images } from '../../../constants';
+import { useSelector } from 'react-redux';
 
 const BackpressProfileTopBar = ({ title }) => {
     const navigation = useNavigation();
@@ -11,14 +12,16 @@ const BackpressProfileTopBar = ({ title }) => {
         navigation.goBack();
     };
 
+    const user = useSelector((state) => state.auth.user);
+
     return (
-        <ImageBackground style={styles.container} source={{ uri: Images.POST_FIVE }}>
+        <ImageBackground style={styles.container} source={{ uri: user?.cover }}>
             <View style={styles.row}>
                 <TouchableOpacity onPress={handleBackPress} style={styles.icon}>
                     <Ionicons
                         name="arrow-back-outline"
                         size={28}
-                        color={Colors.WHITE}
+                        color={Colors.BLACK}
                     />
                 </TouchableOpacity>
                 <Text style={styles.title}>{title}</Text>
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
         marginRight: moderateScale(10),
     },
     title: {
-        color: Colors.WHITE,
+        color: Colors.BLACK,
         fontSize: scale(20),
         fontWeight: '400',
     },

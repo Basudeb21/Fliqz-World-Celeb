@@ -5,9 +5,11 @@ import Ionicons from 'react-native-vector-icons/dist/Ionicons'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import GradientTextButton from '../button/GradientTextButton'
 import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
 
 const ProfileCard = ({ userName }) => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
+    const user = useSelector((state) => state.auth.user);
     const onPressViewProfile = () => {
         navigation.navigate(NavigationStrings.HOME_STACK, {
             screen: NavigationStrings.HOME_FRIEND_PROFILE_PAGE,
@@ -19,7 +21,7 @@ const ProfileCard = ({ userName }) => {
             <View style={styles.rowOne}>
                 <View>
                     <TouchableOpacity style={styles.userImgContainer}>
-                        <Image source={{ uri: Images.CELEBRITY_AVATAR_FIVE }} style={styles.userImg} />
+                        <Image source={{ uri: user?.avatar }} style={styles.userImg} />
                         <TouchableOpacity style={styles.storyAddBtn}>
                             <Ionicons
                                 name={'add-circle'}
@@ -31,8 +33,8 @@ const ProfileCard = ({ userName }) => {
                 </View>
                 <View style={styles.topRow}>
                     <View style={styles.userNameContainer}>
-                        <Text style={styles.userName}>Fans_Test</Text>
-                        <Text style={styles.userID}>@u987654321</Text>
+                        <Text style={styles.userName}>{user?.first_name}</Text>
+                        <Text style={styles.userID}>@{user?.username}</Text>
 
                     </View>
                     <GradientTextButton label='View Profile' fontSize={10} width='40%' height={20} onPress={onPressViewProfile} />
@@ -100,7 +102,6 @@ const styles = StyleSheet.create({
         height: verticalScale(40),
         width: moderateScale(40),
         borderRadius: scale(100),
-
     },
     storyAddBtn: {
         position: "absolute",

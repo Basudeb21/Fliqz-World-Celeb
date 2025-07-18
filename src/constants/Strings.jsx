@@ -15,8 +15,11 @@ export default {
     // PLACEHOLDER
     EMAIL_OR_USERNAME: "Email / Username*",
     PASSWORD: "Password",
-    FULL_NAME: "Full Name*",
+    FIRST_NAME: "First Name*",
+    LAST_NAME: "Last Name*",
+    REFFERAL_CODE: "Refferal Code*",
     EMAIL: "Email*",
+    ADDRESS: "Address*",
     PHONE_NUMBER: "Phone Number",
     CONFIRM_PASSWORD: "Confirm Password*",
 

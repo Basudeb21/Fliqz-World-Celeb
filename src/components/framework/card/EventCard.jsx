@@ -1,42 +1,66 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Colors } from '../../../constants'
-import { scale, verticalScale } from 'react-native-size-matters';
+import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Colors } from '../../../constants';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 
 const EventCard = ({ image, eventName, date, eventOrg, onPress }) => {
     return (
-        <View style={styles.container}>
-            <TouchableOpacity onPress={onPress}><Image style={styles.image} source={{ uri: image }} /></TouchableOpacity>
-            <Text style={styles.productName}>{eventName}</Text>
-            <Text style={styles.productSummary}>{date}</Text>
-            <Text style={styles.productPrice}>{eventOrg}</Text>
-        </View>
-    )
-}
+        <TouchableOpacity onPress={onPress} style={styles.card}>
+            <ImageBackground
+                source={{ uri: image }}
+                style={styles.image}
+                imageStyle={styles.imageStyle}
+            >
+                <View style={styles.overlay} />
 
-export default EventCard
+                <View style={styles.textContainer}>
+                    <Text style={styles.eventName} numberOfLines={1}>{eventName}</Text>
+                    <Text style={styles.eventDate}>{date}</Text>
+                    <Text style={styles.eventOrg} numberOfLines={1}>{eventOrg}</Text>
+                </View>
+            </ImageBackground>
+        </TouchableOpacity>
+    );
+};
+
+export default EventCard;
 
 const styles = StyleSheet.create({
-    container: {
-        minWidth: "43%",
-        maxWidth: "43%"
+    card: {
+        width: '49%',
+        borderRadius: scale(12),
+        overflow: 'hidden',
     },
     image: {
         height: verticalScale(200),
-        borderRadius: scale(12)
+        justifyContent: 'flex-end',
     },
-    productName: {
-        marginTop: verticalScale(7),
-        fontWeight: "500",
-        fontSize: scale(17),
-        color: Colors.FADE_TEXT
+    imageStyle: {
+        borderRadius: scale(12),
     },
-    productSummary: {
-        fontWeight: "400",
+    overlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: Colors.TRANSPARENT_BLACK_DARK,
+        borderRadius: scale(12),
+    },
+    textContainer: {
+        padding: moderateScale(10),
+    },
+    eventName: {
+        fontSize: scale(15),
+        fontWeight: '600',
+        color: Colors.WHITE,
+        marginBottom: verticalScale(2),
+    },
+    eventDate: {
         fontSize: scale(12),
-        color: Colors.SILVER
+        fontWeight: '400',
+        color: Colors.WHITE,
     },
-    productPrice: {
-
-    }
-})
+    eventOrg: {
+        fontSize: scale(13),
+        fontWeight: '500',
+        color: Colors.SILVER,
+        marginTop: verticalScale(4),
+    },
+});

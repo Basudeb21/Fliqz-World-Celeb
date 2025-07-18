@@ -1,9 +1,8 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import React from 'react';
 import { Colors } from '../../../constants';
-import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
-
-import Fontisto from 'react-native-vector-icons/dist/Fontisto'
+import { moderateScale, verticalScale } from 'react-native-size-matters';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const SearchBar = ({ placeholder, value, setValue }) => {
     return (
@@ -24,10 +23,10 @@ const SearchBar = ({ placeholder, value, setValue }) => {
                 />
             </TouchableOpacity>
         </View>
-    )
-}
+    );
+};
 
-export default SearchBar
+export default SearchBar;
 
 const styles = StyleSheet.create({
     container: {
@@ -37,14 +36,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: moderateScale(20),
         flexDirection: "row",
         alignItems: "center",
-        marginBottom: verticalScale(10)
+        marginBottom: verticalScale(10),
     },
     inputBox: {
-        color: Colors.BLACK
+        flex: 1,
+        color: Colors.BLACK,
+        paddingVertical: verticalScale(10),
     },
     searchIcon: {
         position: "absolute",
         right: 0,
-        marginEnd: moderateScale(20)
-    }
-})
+        marginEnd: moderateScale(20),
+    },
+});
